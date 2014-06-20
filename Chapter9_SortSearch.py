@@ -119,7 +119,6 @@ class Chapter9:
 
 		for nu in tmpArr:
 			no = int(nu / ((maxValue + 1) / noBucket))
-
 			#append sort here
 			#best time for sort is when each bin has only 1 value
 			if (len(buckets[no]) == 0):
@@ -127,10 +126,15 @@ class Chapter9:
 			else:
 				tmp = buckets[no][:]
 				buckets[no] = []
+				added = False
 				for j in tmp:
 					if (j > nu):
 						buckets[no].append(nu)
+						added = True
 					buckets[no].append(j)
+				if (not added):
+					buckets[no].append(nu)
+
 
 		#complexity for merge = m (m is distint value)
 		result = []
@@ -138,10 +142,7 @@ class Chapter9:
 			for number in b:
 				result.append(number)
 
-		self.printArr(result)
-
-		#self.printArr(buckets)
-		
+		self.printArr(result)		
 
 	def printArr(self, arr=[]):
 		for i in arr:
@@ -149,12 +150,77 @@ class Chapter9:
 
 		print()
 
+	'''exercises'''
+	def Exercise91(self, left=[], right=[]):
+		i = 0
+		for nr in right:
+			while (left[i] is not None and nr > left[i]):
+				i += 1
+
+			if (left[i] is None):
+				left[i] = nr
+				i += 1
+			#push elements to the right
+			else:
+				for j in reversed(range(i + 1, len(left))):
+					if (left[j - 1] is not None):
+						left[j] = left[j - 1]
+				left[i] = nr
+
+		self.printArr(left)
+
+	#first check strings are anagrams
+	#check anagram by sorting string and compare
+	def Exercise92(self, strings=[]):
+		print(strings)
+
+		i = 0
+
+		while (i < len(strings) - 1):
+
+			for j in range(i + 1, len(strings)):
+				if (self.E92_checkAnagram(strings[i], strings[j])):
+					tmp = strings[i + 1] 
+					strings[i + 1] = strings[j]
+					strings[j] = tmp
+					i += 1
+
+			i += 1
+
+		print(strings)
+
+	def E92_checkAnagram(self, s1, s2):
+		if (len(s1) != len(s2)):
+			return False
+		return self.E92_sortS(s1) == self.E92_sortS(s2) 
+			
+
+		return True
+	def E92_sortS(self, s):
+		l = list(s)
+		#bubbleSort
+		for i in reversed(range(1, len(l))):
+			for j in range(i):
+				if (l[j] < l[j + 1]):
+					tmp = l[j]
+					l[j] = l[j + 1]
+					l[j + 1] = tmp
+
+		return ''.join(l)
+		
+	#end Exercise92
+
+
 
 #test bed
 testArrError = [1]
 testArr = [1, 5, 10, 6, 9, 8, 3, 7]
 test = Chapter9()
 
+arr = ['123', '55', '77', '88', '231', '55', '55', '99', '312']
+test.Exercise92(arr)
+
+'''
 print('bubble sort')
 test.bubbleSort(testArr)
 
@@ -167,4 +233,10 @@ test.mergeSort(testArr)
 print('bucket sort')
 test.bucketSort(5, testArr)
 
+
+left = [1, 5, 7, None, None, None]
+right = [2, 6, 8]
+
+test.Exercise91(left, right)
+'''
 
