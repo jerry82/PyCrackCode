@@ -210,17 +210,69 @@ class Chapter9:
 		
 	#end Exercise92
 
+	def Exercise93(self, number, arr=[]):
+		idx = -1
+		newArr = []
+
+		start = 0
+		mid = -1 
+		end = len(arr) - 1
+		mid = int((start + end) / 2) 
+
+		if (arr[end] == number):
+			print(number, '=>', end)
+			return
+
+		if (arr[start] == number):
+			print(number, '=>', start)
+			return
+
+		while (mid != start and mid != end):
+
+			#print('mid: ', mid, 'start: ' , start, 'end: ', end)
+			
+			if (arr[mid] == number):
+				idx = mid
+				break
+
+			if (arr[start] > arr[end]):
+				#mid < start and mid > start
+				if (arr[start] < arr[mid]):
+					if (number < arr[mid]):
+						end = mid
+					else:
+						start = mid
+				else:
+					#right
+					if (arr[mid] < number and arr[end] > number):
+						start = mid
+					else:
+						end = mid
+			else:
+				#left
+				if (arr[mid] > number):
+					end = mid
+				else:
+					start = mid
+
+
+			mid = int((start + end) / 2)
+
+		print(number, '=>', idx)
+
 
 
 #test bed
-testArrError = [1]
-testArr = [1, 5, 10, 6, 9, 8, 3, 7]
+testArr = [15, 16, 19, 20, 25, 1, 3, 4, 5, 7, 10, 14]
 test = Chapter9()
 
+for nu in testArr:
+	test.Exercise93(nu, testArr)
+
+'''
 arr = ['123', '55', '77', '88', '231', '55', '55', '99', '312']
 test.Exercise92(arr)
 
-'''
 print('bubble sort')
 test.bubbleSort(testArr)
 
