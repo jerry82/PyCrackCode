@@ -341,23 +341,36 @@ class Chapter9:
 			return self.Search96(num, jstart, mid - 1, arr)
 
 
+	def Exercise97(self, arr=[]):
 		
+		#sort base on  0 idx
+		l = len(arr)
+
+		for i in reversed(range(l)):
+			for j in range(0, i):
+				if (arr[j][0] > arr[j + 1][0]):
+					tmp = arr[j]
+					arr[j] = arr[j + 1]
+					arr[j + 1] = tmp
+		cnt = 1
+		tmp = arr[0][1]
+
+		for k in range(1, l):
+			if (arr[k][1] <= tmp):
+				continue
+
+			cnt += 1
+			tmp = arr[k][1]
+
+
+		print(cnt)
+
 
 #test bed
-#testArr = [[1, 2, 3], [5, 6, 7], [8, 9, 10]]
-
-tmp = 1
-testArr = []
-for i in range(0, 4):
-	testArr.append([])
-	tmp -= 1
-	for j in range(0, 5):
-		testArr[i].append(tmp)
-		tmp += 1
-
+testArr = [[65, 100], [70, 150], [56, 90], [75, 190], [60, 95], [68, 110]]
 test = Chapter9()
-print(testArr)
-test.Exercise96(12, testArr)
+
+test.Exercise97(testArr)
 
 '''
 arr = ['123', '55', '77', '88', '231', '55', '55', '99', '312']
