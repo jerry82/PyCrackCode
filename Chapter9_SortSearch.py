@@ -260,14 +260,104 @@ class Chapter9:
 
 		print(number, '=>', idx)
 
+	#search sort strings with empty str in between
+	def Exercise95(self, inputStr, arr=[]):
+		result = self.Search95(inputStr, 0, len(arr) - 1, arr)
+		print(result)
 
+	global times
+	times = 0
+	#recursive if stuck at "" then search left and right
+	def Search95(self, inputStr, start, end, arr=[]):
+
+		global times
+		times += 1
+		print("executed: ", times)
+
+		if (start == end):
+			if (arr[start] == inputStr):
+				return start
+			else:
+				return -1
+
+		mid = int((start + end) / 2)
+
+		if (arr[mid] == inputStr):
+			return mid
+
+		if (arr[mid] == ""):
+			tmpL = self.Search95(inputStr, start, mid - 1, arr)
+			if (tmpL == -1):
+				return self.Search95(inputStr, mid + 1, end, arr)
+			else:
+				return tmpL
+			
+		elif (arr[mid] > inputStr):
+			return self.Search95(inputStr, start, mid - 1, arr)
+		else:
+			return self.Search95(inputStr, mid + 1, end, arr)
+	
+	def Exercise96(self, num, arr=[]):
+		'''
+		tmp = [6, 7, 8, 9, 10]
+		result = self.Search96(18, 0, len(tmp) - 1, tmp)
+		print(result)
+		'''
+		
+		resultJ = -1
+
+		col = len(arr[0]) - 1 
+
+		for i in range(len(arr)):
+			tmp = arr[i]
+
+			resultI = -1
+			resultJ = -1
+
+			if (tmp[0] <= num and tmp[col] >= num):
+				resultI = i
+				resultJ = self.Search96(num, 0, col, tmp)
+
+				if (resultJ > -1):
+					print(resultI, resultJ)
+
+			if (tmp[0] > num):
+				break;
+
+
+	def Search96(self, num, jstart, jend, arr=[]):
+		if (jstart == jend):
+			if arr[jstart] == num:
+				return jstart
+			else:
+				return -1
+
+		mid = int((jstart + jend) / 2)
+		if (arr[mid] == num):
+			return mid
+		elif(arr[mid] < num):
+			return self.Search96(num, mid + 1, jend, arr)
+		else:
+			return self.Search96(num, jstart, mid - 1, arr)
+
+
+		
 
 #test bed
-testArr = [15, 16, 19, 20, 25, 1, 3, 4, 5, 7, 10, 14]
-test = Chapter9()
+#testArr = [[1, 2, 3], [5, 6, 7], [8, 9, 10]]
 
-for nu in testArr:
-	test.Exercise93(nu, testArr)
+tmp = 1
+testArr = []
+for i in range(0, 4):
+	testArr.append([])
+	tmp -= 1
+	for j in range(0, 5):
+		testArr[i].append(tmp)
+		tmp += 1
+
+test = Chapter9()
+print(testArr)
+test.Exercise96(12, testArr)
 
 '''
 arr = ['123', '55', '77', '88', '231', '55', '55', '99', '312']
