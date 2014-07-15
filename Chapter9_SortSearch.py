@@ -64,41 +64,114 @@ class Chapter9:
 
 		return self.ms_merge(left, right)
 
-	#return merge sorted array	
+
 	def ms_merge(self, left=[], right=[]):
+		tmp = left[:] + [None] * len(right) 
 
-		tmp = []
+		iL = len(left) - 1
+		iR = len(right) - 1
+		L = len(tmp) - 1
 
-		i = 0
-		j = 0
-		L = len(left) + len(right)
-		check = True
+		while (iL >= 0 and iR >= 0):
+			if (left[iL] > right[iR]):
+				tmp[L] = left[iL]
+				iL -= 1
+			else:
+				tmp[L] = right[iR]
+				iR -= 1
 
-		for a in range(0, L):
+			L -= 1
 
-			if (i >= len(left)):
-				check = False
-				tmp.append(right[j])
-				j += 1
+		while (iL >= 0):
+			tmp[iL] = left[iL]
+			iL -= 1
 
-			elif (j >= len(right)):
-				check = False
-				tmp.append(left[i])
-				i += 1
-
-			if (check):
-				if (left[i] > right[j]):
-					tmp.append(right[j])
-					j += 1
-				else:
-					tmp.append(left[i])
-					i += 1	
+		while (iR >= 0):
+			tmp[iR] = right[iR]
+			iR -= 1
 
 		return tmp
 
 	#complicate: cannot remember
 	def quickSort(self, arr=[]):
 		pass
+
+
+	def heapSort(self, arr=[]):
+		tmp = []
+		curIdx = 0
+
+		#build a heap array 
+		for num in arr:			
+			tmp.append(num)
+
+			#arrange
+			tmpCur = curIdx
+			iM = self.hs_getMom(tmpCur)
+
+			while (iM != -1):
+				if (tmp[iM] < tmp[tmpCur]):
+					tmpNum = tmp[iM] 
+					tmp[iM] = tmp[tmpCur]
+					tmp[tmpCur] = tmpNum
+
+				tmpCur = iM
+				iM = self.hs_getMom(tmpCur)
+
+			curIdx += 1
+		
+		#sort
+		iD = len(tmp) - 1
+		while (iD >= 0):
+			#swap last and first element
+			if (tmp[iD] < tmp[0]):
+				tmpNu = tmp[0]
+				tmp[0] = tmp[iD]
+				tmp[iD] = tmpNu
+
+			iD -= 1
+
+			#move the new top element to bottom
+			cur = 0
+			iL = self.hs_getLeft(cur)
+			iR = self.hs_getRight(cur)
+
+			while (iL <= iD or iR <= iD):
+
+				#has 2 children
+				if (iR <= iD):
+					if (tmp[iL] > tmp[iR]):
+						tmpX = iL
+					else:
+						tmpX = iR
+				#has 1 child
+				else:
+					tmpX = iL
+
+				#swap and assign new cur
+				tmpNu = tmp[tmpX] 
+				tmp[tmpX] = tmp[cur]
+				tmp[cur] = tmpNu
+
+				cur = tmpX
+				iL = self.hs_getLeft(cur)
+				iR = self.hs_getRight(cur)
+
+		print(tmp)
+
+	def hs_getLeft(self, curIdx):
+		return curIdx * 2 + 1
+
+	def hs_getRight(self, curIdx):
+		return curIdx * 2 + 2
+
+	def hs_getMom(self, curIdx):
+		if (curIdx == 0):
+			return -1;
+		if (curIdx % 2 != 0):
+			return int((curIdx - 1) / 2)
+		else: 
+			return int((curIdx - 2) / 2)
 
 	#or bin sort
 	#O(n + m): best
@@ -151,7 +224,7 @@ class Chapter9:
 		print()
 
 	'''exercises'''
-	def Exercise91(self, left=[], right=[]):
+	def Exercise91a(self, left=[], right=[]):
 		i = 0
 		for nr in right:
 			while (left[i] is not None and nr > left[i]):
@@ -168,6 +241,36 @@ class Chapter9:
 				left[i] = nr
 
 		self.printArr(left)
+
+	#complexity = len(left)
+	def Exercise91(self, left=[], right=[]):
+
+		la = 0
+		lb = len(right) - 1
+		l = len(left) - 1
+
+		#assume la > lb
+		for i in reversed(range(len(left))):
+			if (left[i] is not None):
+				la = i
+				break;
+
+		#sort from the righ most
+		while (la >= 0 and lb >= 0):
+			if (left[la] > right[lb]):
+				left[l] = left[la]
+				la -= 1
+			else:
+				left[l] = right[lb]
+				lb -= 1
+			
+			l -= 1
+
+		while (lb >= 0):
+			left[lb] = right[lb]
+			lb -= 1
+
+		print(left)
 
 	#first check strings are anagrams
 	#check anagram by sorting string and compare
@@ -367,10 +470,10 @@ class Chapter9:
 
 
 #test bed
-testArr = [[65, 100], [70, 150], [56, 90], [75, 190], [60, 95], [68, 110]]
+arr = [6, 5, 3, 1, 8, 7, 2, 4]
 test = Chapter9()
+test.heapSort(arr);
 
-test.Exercise97(testArr)
 
 '''
 arr = ['123', '55', '77', '88', '231', '55', '55', '99', '312']
