@@ -131,6 +131,10 @@ class Solution:
 
 	def build2(self):
 		return [1, 2, 5, 3, 6, 8, 7]
+
+	'''
+	'''
+
 		
 test = Solution()
 test.sol2()
