@@ -1,3 +1,8 @@
+from BST import BSTNode
+from BST import BST
+from DLL import DLLNode
+from DLL import DLL
+
 class Solution:
 
 	#find row has max num of 1
@@ -127,15 +132,68 @@ class Solution:
 		return  pad
 
 
-
-
 	def build2(self):
 		return [1, 2, 5, 3, 6, 8, 7]
 
-	'''
-	'''
 
-		
+	#convert BST to DDL
+	def sol3(self):
+		tree = BST()
+		arr = [30, 20, 40, 10, 37, 45, 12]
+
+		for n in arr:
+			tree.add(n)
+
+		tree.inOrder(tree.root)
+		print('convert tree to double link list')
+		dll = DLL()
+		self.convert3(dll, tree.root)
+		dll.trace()
+
+		print('\nconvert back the dll to balanced tree')
+		tree = BST()
+		self.convertDllToTree(tree, dll, 0, dll.count - 1)
+		tree.levelOrder()
+
+
+	def convert3(self, dll, node):
+		if (node is None):
+			return
+
+		self.convert3(dll, node.left)
+		dll.add(node.value)
+		self.convert3(dll, node.right)
+
+	#method 1:
+	def convertDllToTree(self, tree, dll, start, end):
+		if (start == end - 1 or start == end):
+			value = self.getValueAt(dll, start)
+			tree.add(value)
+			print('return')
+			return
+
+		mid = int(round(float(start + end) / 2))
+		value = self.getValueAt(dll, mid)
+		tree.add(value)
+
+		self.convertDllToTree(tree, dll, start, mid - 1)
+		self.convertDllToTree(tree, dll, mid + 1, end)
+
+		return tree
+
+	def getValueAt(self, dll, i):
+		cur = dll.head
+
+		if (dll.count <= i):
+			return None
+
+		while (i > 0):
+			i -= 1
+			cur = cur.next
+
+		#print("get value at: ", i, ' -> ', cur.value)
+		return cur.value
+
+
 test = Solution()
-test.sol2()
-
+test.sol3()
