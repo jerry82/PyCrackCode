@@ -152,7 +152,13 @@ class Solution:
 
 		print('\nconvert back the dll to balanced tree')
 		tree = BST()
+
 		self.convertDllToTree(tree, dll, 0, dll.count - 1)
+		'''
+		n = dll.count
+		self.sortedDLLToBST(tree, dll, n)
+		'''
+
 		tree.levelOrder()
 
 
@@ -181,6 +187,38 @@ class Solution:
 
 		return tree
 
+	#method 2: FAILED
+	def sortedDLLToBST(self, tree, dll, n):
+
+		if n <= 0:
+			return None
+
+		print('n: ', n)
+		#input()
+
+		rootValue = dll.head.value
+
+		if (dll.head is not None):
+			print('add root: ', rootValue)
+			tree.add(rootValue)
+
+
+		print('left')
+		leftValue = self.sortedDLLToBST(tree, dll, int(n/2))
+
+		if (leftValue is not None):		
+			tree.add(leftValue)	
+
+		dll.head = dll.head.next
+
+		rightValue = self.sortedDLLToBST(tree, dll, n - int(n/2) - 1)
+
+		if (rightValue is not None):
+			tree.add(rightValue)
+
+		return rootValue
+
+
 	def getValueAt(self, dll, i):
 		cur = dll.head
 
@@ -193,6 +231,15 @@ class Solution:
 
 		#print("get value at: ", i, ' -> ', cur.value)
 		return cur.value
+
+
+	#Given an array, Find a triplet a, b, c such that a2 = b2 + c2
+	#similiar to  Find a pair with given sum
+	#use hashing
+	def sol4(self):
+		arr = [9, 2, 3, 4, 8, 5, 6, 10]
+
+		
 
 
 test = Solution()
