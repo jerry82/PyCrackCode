@@ -1,0 +1,5 @@
+/Users/darkmouse/Documents/Code/Python/crackcode/CSharp/Solution/Solution/obj/x86/Debug/.NETFramework,Version=v4.0.AssemblyAttribute.cs
+/Users/darkmouse/Documents/Code/Python/crackcode/CSharp/Solution/Solution/bin/Debug/Solution.exe.mdb
+/Users/darkmouse/Documents/Code/Python/crackcode/CSharp/Solution/Solution/bin/Debug/Solution.exe
+/Users/darkmouse/Documents/Code/Python/crackcode/CSharp/Solution/Solution/obj/x86/Debug/Solution.exe
+/Users/darkmouse/Documents/Code/Python/crackcode/CSharp/Solution/Solution/obj/x86/Debug/Solution.exe.mdb
