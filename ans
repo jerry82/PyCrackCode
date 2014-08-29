@@ -42,7 +42,53 @@ public class Program {
 		string node2Id = DB.getNodeId(person2Id);
 
 		//BFS to connect node
-		
-		
 	}
 }
+
+12.3 Stack vs Heap 
+Stack: 
+	. code, value type, manage its own memory, clear the unused slot
+	. not garbage collectible
+	. extremely fast, access from processor by stack pointer, pointer move updown to 
+	assign or clear the memory
+
+Heap: 
+	. reference type, pointer, need GC to manage the space
+
+12.4 Hadoop and Map Reduce
+Opensource software that allow concurrently map the program to distributed node, execute
+program on each node paralelly and combine the result to return result to the request(Reduce) 
+HDFS: Hadoop Distributed File System
+
+12.5 Memory Paging
+Control how the Virtual Memory are shared. When lack of RAM, CPU use storage as disk to act as RAM -> 
+Page file.
+
+12.6 Distributed Cached
+Cache = normally memory database design for quick retrieval just like NoSQL
+Cache distributed in each nodes (copies will be store in different nodes)
+
+12.7 How browser works:
+Enter address into browser, the B will establish a Http connection to the server, download HTML. 
+Then it builds a DOM object (document object model as a tree), then download css, script, images
+Javascript can change DOM on the fly. 
+
+12.8 Consumer and Producer:
+Semaphore is a new type (~ interger only allow 2 operations: wait(s) and signal(s))
+. wait(s) : wait for s to  be > 0, then s = s - 1 and return (atomic operation)
+. sign(s) : simply increment s = s + 1
+
+(binary semaphore) 0 or 1 (use as lock)
+
+Semaphore introduces deadlock:
+To solve dead lock , assign number to resource, for all processes, try to access the resource with
+lower number if cannot then wait
+
+
+
+
+
+
+
+
+
