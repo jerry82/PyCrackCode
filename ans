@@ -1,0 +1,48 @@
+12.1. How to store stock price:
+
+open, high, low, close = 5000 x 4 = 20,000
+1000 daily users : 
+Solutions:
+use Text file: (hard to modified)
+use XML file: (easy to read, moderate to modify if data is big)
+use Database: (easy to read, write, load balance, extensible)
+
+
+12.2. represent big graph Facebook or Linkedin
+
+Use graph data structure
+represent each person as a class 
+graph node store only person id
+
+public class Person {
+	public String Name { get; set; }
+	public String LastName { get; set; }
+	public String Email { get; set; }
+	public String Id { get; set; }
+	public List<string> FriendIds { get; set; }
+}
+
+public class Node {
+	public string Id { get; set; }
+	public string personId { get; set }
+	public List<string> FIds { get; set; }
+}
+
+public class Program {
+	
+	private Graph _graph = null
+	public Program(Graph graph) {
+		_graph = graph;
+	}
+
+	//implement BFS
+	public void BuildPath(string person1Id, string person2Id) {
+
+		string node1Id = DB.getNodeId(person1Id);
+		string node2Id = DB.getNodeId(person2Id);
+
+		//BFS to connect node
+		
+		
+	}
+}
