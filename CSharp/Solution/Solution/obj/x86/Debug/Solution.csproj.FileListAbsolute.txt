@@ -1,0 +1,4 @@
+C:\code\python\PyCrackCode\CSharp\Solution\Solution\bin\Debug\Solution.exe
+C:\code\python\PyCrackCode\CSharp\Solution\Solution\bin\Debug\Solution.pdb
+C:\code\python\PyCrackCode\CSharp\Solution\Solution\obj\x86\Debug\Solution.exe
+C:\code\python\PyCrackCode\CSharp\Solution\Solution\obj\x86\Debug\Solution.pdb

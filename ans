@@ -26,6 +26,23 @@ public class Node {
 	public string Id { get; set; }
 	public string personId { get; set }
 	public List<string> FIds { get; set; }
+	public string MachineId { get; set; }
+
+
+}
+
+AppLogic.getFriends(visited, curNode);
+
+public class AppLogic {
+	//...
+
+	public Person getPerson(Node node) {
+		string machineId = noe.MachineId;
+
+		return Server.getPerson(machineId, node.Id);
+	}
+
+	//...
 }
 
 public class Program {
@@ -38,11 +55,62 @@ public class Program {
 	//implement BFS
 	public void BuildPath(string person1Id, string person2Id) {
 
-		string node1Id = DB.getNodeId(person1Id);
-		string node2Id = DB.getNodeId(person2Id);
+		TraceNode node1Id = DB.getNodeId(person1Id);
+		TraceNode node2Id = DB.getNodeId(person2Id);
 
 		//BFS to connect node
-		
-		
+		Dictionary<TraceNode, int> visited = new Dictionary<TraceNode, int>()		
+		Queue<TraceNode> myQ = new Queue<TraceNode>();
+		myQ.Enqueue(node1Id);
+
+		while(myQ.Count > 0) {
+			TraceNode curNode = myQ.Dequeue();
+			visited.Add(curNode, 1);
+
+			//make sure the friend not in visted list
+			List<TraceNode> friends = AppLogic.getFriends(visited, curNode);
+			foreach (TraceNode friend in friends) { 
+				if (friend == node2Id) {
+					//found
+					break;
+				}
+
+				//for trace back
+				friend.Prev = curNode
+				myQ.Enqueue(friend)
+			}
+		}
+
+		//DFS
+		Stack<TraceNode> myS = new Stack<TraceNode>();
+
+		myS.Push(node1Id);
+
+		while (myS.Count > 0) {
+			TraceNode cur = myS.Peek();
+
+			visited.Add(cur);
+
+			//friend not visited and friend has some similiar geographical location with node2Id
+			TraceNode friend = AppLogic.getOneFriend(visited, cur);
+
+			if (friend != null) {
+
+				if (friend == node2Id) {
+					//found
+					break;
+				}
+				//for backtracking
+				friend.prev = curNode
+				myS.Push(friend);
+				visited.Add(friend, 1);
+			}
+			else {
+				myS.Pop();
+			}
+
+
+		}
+
 	}
 }
