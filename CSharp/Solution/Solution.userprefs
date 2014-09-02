@@ -1,8 +1,19 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Solution\StringSol.cs">
+    <Files>
+      <File FileName="Solution\Program.cs" Line="12" Column="30" />
+      <File FileName="Solution\SubsequenceSum.cs" Line="1" Column="1" />
+      <File FileName="Solution\PermuteString.cs" Line="1" Column="1" />
+      <File FileName="Solution\JBit.cs" Line="1" Column="1" />
+      <File FileName="Solution\StringSol.cs" Line="54" Column="10" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="C:\code\python\PyCrackCode\CSharp\Solution\Solution\StringSol.cs" line="52" column="1" />
+      <Breakpoint file="C:\code\python\PyCrackCode\CSharp\Solution\Solution\StringSol.cs" line="59" column="1" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>

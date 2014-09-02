@@ -8,17 +8,17 @@ namespace Solution
 	{
 		public static void Main (string[] args)
 		{
-			byte[] bytes = new byte[2];
+			StringSol s = new StringSol ();
+			s.AllUniqueChar ("kdjfa;dsfjka;dsfjdsa;jfa");
 
-			BitArray bits = new BitArray (bytes);
+			/*
+			String st = "abcdeffgac";
+			Char[] chars = st.ToCharArray();
+			chars[0] = chars[1];
 
-			foreach (Object obj in bits) {
-				Console.Write ("{0} ", obj);
-			}
-
+			Console.WriteLine(new String(chars));
+			*/
 			Console.ReadLine ();
-
-
 		}
 	}
 }

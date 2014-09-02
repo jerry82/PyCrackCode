@@ -37,6 +37,7 @@
     <Compile Include="SubsequenceSum.cs" />
     <Compile Include="PermuteString.cs" />
     <Compile Include="JBit.cs" />
+    <Compile Include="StringSol.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
