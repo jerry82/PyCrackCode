@@ -1,4 +1,4 @@
-12.1. How to store stock price:
+.1. How to store stock price:
 
 open, high, low, close = 5000 x 4 = 20,000
 1000 daily users : 
@@ -8,7 +8,7 @@ use XML file: (easy to read, moderate to modify if data is big)
 use Database: (easy to read, write, load balance, extensible)
 
 
-12.2. represent big graph Facebook or Linkedin
+.2. represent big graph Facebook or Linkedin
 
 Use graph data structure
 represent each person as a class 
@@ -115,7 +115,7 @@ public class Program {
 	}
 }
 
-12.3 Stack vs Heap 
+.3 Stack vs Heap 
 Stack: 
 	. code, value type, manage its own memory, clear the unused slot
 	. not garbage collectible
@@ -125,25 +125,25 @@ Stack:
 Heap: 
 	. reference type, pointer, need GC to manage the space
 
-12.4 Hadoop and Map Reduce
+.4 Hadoop and Map Reduce
 Opensource software that allow concurrently map the program to distributed node, execute
 program on each node paralelly and combine the result to return result to the request(Reduce) 
 HDFS: Hadoop Distributed File System
 
-12.5 Memory Paging
+.5 Memory Paging
 Control how the Virtual Memory are shared. When lack of RAM, CPU use storage as disk to act as RAM -> 
 Page file.
 
-12.6 Distributed Cached
+.6 Distributed Cached
 Cache = normally memory database design for quick retrieval just like NoSQL
 Cache distributed in each nodes (copies will be store in different nodes)
 
-12.7 How browser works:
+.7 How browser works:
 Enter address into browser, the B will establish a Http connection to the server, download HTML. 
 Then it builds a DOM object (document object model as a tree), then download css, script, images
 Javascript can change DOM on the fly. 
 
-12.8 Consumer and Producer:
+.8 Consumer and Producer:
 Semaphore is a new type (~ interger only allow 2 operations: wait(s) and signal(s))
 . wait(s) : wait for s to  be > 0, then s = s - 1 and return (atomic operation)
 . sign(s) : simply increment s = s + 1
@@ -153,6 +153,34 @@ Semaphore is a new type (~ interger only allow 2 operations: wait(s) and signal(
 Semaphore introduces deadlock:
 To solve dead lock , assign number to resource, for all processes, try to access the resource with
 lower number if cannot then wait
+
+.9 A Prime
+$99/year
+free 2-day shipping (normally above $35 for free shipping)
+free book for rent 
+Amazon Prime Music
+Amazon Prime Instant Video vs Netflix, Hulu Plus
+
+.10
+Quicksort: 
+	. best & average: O(nlogn) when partion is balance
+	. worst: O(n^2) when partition is not balanced (can be fixed by randomize pivot)
+
+	+ space: in place sort O(n)
+
+Mergesort:
+	. average O(nlogn)
+	+ space = n ( 1/2 + 1/4 + ...) ~ 0(n)
+
+.11
+SOLID in OOP design
+
+
+.11 Resu
+
+
+
+
 
 
 
