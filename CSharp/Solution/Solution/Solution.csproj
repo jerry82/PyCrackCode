@@ -38,6 +38,9 @@
     <Compile Include="PermuteString.cs" />
     <Compile Include="JBit.cs" />
     <Compile Include="StringSol.cs" />
+    <Compile Include="ScheduleLine.cs" />
+    <Compile Include="MatrixRotate.cs" />
+    <Compile Include="StockPan.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

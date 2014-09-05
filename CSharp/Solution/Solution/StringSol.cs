@@ -9,7 +9,7 @@ namespace Solution
 		}
 
 		/* sort string then check next */
-		public void AllUniqueChar(String tmp) {
+		public void Run(String tmp) {
 
 			Char[] chars = tmp.ToCharArray ();
 			SortString (chars, 0, tmp.Length - 1);
@@ -60,7 +60,7 @@ namespace Solution
 				}
 
 			
-				while (input [j] >= piv) {
+				while (input [j] > piv) {
 					j--;
 					if (j < start)
 						break;
