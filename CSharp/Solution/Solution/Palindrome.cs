@@ -5,7 +5,7 @@ namespace Solution
 	public class Palindrome
 	{
 		//string str = @"dsfaaddffbobkayakbobaabbca";
-		string str = @"aaaabobkayakbobaaggaaaaaaaaaaaaaaaaaaaabb";
+		string str = @"aab";
 		public Palindrome ()
 		{
 		}
@@ -16,8 +16,6 @@ namespace Solution
 			int prev = 0;
 
 			int length = 1;
-
-			bool keepLeftP = false;
 			bool firstTimePrev = true;
 			bool same = false;
 
